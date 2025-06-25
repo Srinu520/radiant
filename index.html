@@ -1,169 +1,389 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Radiant Amps - Solar Consulting</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      color: #002B45;
-      background: url('./backdrop.jpeg') no-repeat center center fixed;
-      background-size: cover;
-    }
-    section {
-      padding: 100px 20px;
-      background-color: rgba(255, 255, 255, 0.92);
-    }
-    #home {
-      background: linear-gradient(to bottom right, rgba(245,245,245,0.95), rgba(220,220,200,0.92)),
-                  url('https://cdn.pixabay.com/photo/2020/02/09/08/34/solar-panel-4834394_1280.jpg') no-repeat center center;
-      background-size: cover;
-      background-blend-mode: overlay;
-      padding: 120px 20px;
-      text-align: center;
-    }
-    .navbar {
-      background: linear-gradient(90deg, #F7B500, #FFDC5E);
-      padding: 12px 30px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      position: fixed;
-      width: 100%;
-      top: 0;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.15);
-      z-index: 1000;
-    }
-    .navbar img {
-      height: 50px;
-    }
-    .navbar a {
-      margin-left: 25px;
-      text-decoration: none;
-      color: #002B45;
-      font-weight: 700;
-      text-transform: uppercase;
-      transition: all 0.3s ease;
-      padding: 6px 10px;
-      border-radius: 4px;
-    }
-    .navbar a:hover {
-      background-color: #fffbe0;
-      color: #7BBF6A;
-      box-shadow: inset 0 -3px 0 #F7B500;
-    }
-    .navbar a.active {
-      background-color: #7BBF6A;
-      color: white;
-      box-shadow: inset 0 -3px 0 #004D25;
-    }
-    .service-card {
-      margin: 20px auto;
-      max-width: 900px;
-      background: #ffffff;
-      border-radius: 10px;
-      padding: 40px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      transition: transform 0.3s ease;
-    }
-    .service-card:hover {
-      transform: translateY(-5px);
-    }
-  </style>
-  <script>
-    window.addEventListener("DOMContentLoaded", () => {
-      const links = document.querySelectorAll(".navbar a");
-      links.forEach(link => {
-        link.addEventListener("click", () => {
-          links.forEach(el => el.classList.remove("active"));
-          link.classList.add("active");
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Radiant Amps - Solar Consulting</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: 'Segoe UI', sans-serif;
+        color: #002B45;
+        background: url('./backdrop.jpeg') no-repeat center center fixed;
+        background-size: cover;
+      }
+
+      section {
+        padding: 50px 20px;
+      }
+
+      #home {
+        height: 100vh;
+        animation: heroSlideShow 52s infinite;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-blend-mode: overlay;
+        padding: 120px 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+      }
+
+      #home>div {
+        background-color: rgba(255, 255, 255, 0.92);
+        padding: 40px;
+        border-radius: 12px;
+        display: inline-block;
+        max-width: 800px;
+      }
+
+      @keyframes heroSlideShow {
+        0% {
+          background-image: url('./hero1.png');
+        }
+
+        25% {
+          background-image: url('./hero2.png');
+        }
+
+        50% {
+          background-image: url('./hero3.png');
+        }
+
+        75% {
+          background-image: url('./hero4.png');
+        }
+
+        100% {
+          background-image: url('./hero1.png');
+        }
+      }
+
+      #services {
+        /* background-color: #fdfcf8; */
+        background-color: rgba(253, 253, 248, 0.92);
+      }
+
+      #about {
+        /* background-color: #f8fdfc; */
+        background-color: rgba(248, 253, 252, 0.92);
+      }
+
+      #careers {
+        /* background-color: #fcf9fd; */
+        background-color: rgba(253, 253, 248, 0.92);
+        padding: 100px 20px 10px 20px;
+      }
+
+      #contact {
+        /* background-color: #f8fdfc; */
+        background-color: rgba(248, 253, 252, 0.92);
+        padding: 50px 20px 10px 20px;
+      }
+
+      .navbar {
+        background: linear-gradient(90deg, #F7B500, #FFDC5E);
+        padding: 12px 30px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+        z-index: 1000;
+      }
+
+      .navbar img {
+        height: 50px;
+      }
+
+      .navbar div {
+        padding: 0 3rem;
+      }
+
+      .navbar a {
+        margin-left: 25px;
+        text-decoration: none;
+        color: #002B45;
+        font-weight: 700;
+        text-transform: uppercase;
+        transition: all 0.3s ease;
+        padding: 6px 10px;
+        border-radius: 4px;
+      }
+
+      .navbar a:hover {
+        background-color: #fffbe0;
+        color: #7BBF6A;
+        box-shadow: inset 0 -3px 0 #F7B500;
+      }
+
+      .navbar a.active {
+        background-color: #7BBF6A;
+        color: white;
+        box-shadow: inset 0 -3px 0 #004D25;
+      }
+      #services p {
+        font-size: 18px;
+        line-height: 1.6;
+        margin-bottom: 20px;
+        padding: 0 3rem;
+      }
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        gap: 20px;
+        max-width: 1200px;
+        margin: auto;
+      }
+
+      .service-card {
+        background: #ffffff;
+        border-radius: 10px;
+        padding: 30px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+      }
+
+      .service-card:hover {
+        transform: translateY(-5px);
+      }
+
+      footer {
+        background-color: #1d1d1d;
+        color: #f4f4f4;
+        padding: 40px 30px 20px;
+        font-size: 15px;
+      }
+
+      .footer-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+      }
+
+      .footer-logo img {
+        height: 50px;
+      }
+
+      .footer-links {
+        display: flex;
+        gap: 25px;
+        flex-wrap: wrap;
+        justify-content: start;
+        align-self: start;
+      }
+
+      .footer-links a {
+        color: #f4f4f4;
+        text-decoration: none;
+        font-weight: 600;
+        transition: color 0.3s ease;
+      }
+
+      .footer-links a:hover {
+        color: #f7b500;
+      }
+
+      .footer-line {
+        border: none;
+        border-top: 1px solid #555;
+        margin: 30px 0 0;
+      }
+
+      .footer-bottom {
+        text-align: center;
+        font-size: 13px;
+        margin-top: 20px;
+      }
+
+      .footer-bottom a {
+        color: #f4f4f4;
+        text-decoration: none;
+      }
+
+      .footer-bottom a:hover {
+        text-decoration: underline;
+      }
+
+      @media (min-width: 768px) {
+        .footer-container {
+          flex-direction: row;
+          align-items: flex-start;
+        }
+
+        .footer-logo {
+          flex: 0 0 30%;
+        }
+
+        .footer-links {
+          flex: 1;
+          display: flex;
+          justify-content: flex-start;
+          padding-left: 5%;
+        }
+      }
+    </style>
+    <script>
+      window.addEventListener("DOMContentLoaded", () => {
+        const links = document.querySelectorAll(".navbar a");
+        links.forEach(link => {
+          link.addEventListener("click", () => {
+            links.forEach(el => el.classList.remove("active"));
+            link.classList.add("active");
+          });
         });
       });
-    });
-  </script>
-</head>
-<body>
-  <div class="navbar">
-    <img src="logo169.jpg" alt="Radiant Amps Logo">
-    <div>
-      <a href="#home" class="active">HOME</a>
-      <a href="#services">SERVICES</a>
-      <a href="#about">ABOUT</a>
-      <a href="#careers-contact">CAREERS & CONTACT</a>
-    </div>
-  </div>
+    </script>
+  </head>
 
-  <!-- HERO SECTION -->
-  <section id="home">
-    <div style="background-color: rgba(255, 255, 255, 0.92); padding: 40px; border-radius: 12px; display: inline-block; max-width: 800px;">
-      <h1 style="font-size: 48px; margin-bottom: 20px; font-weight: bold;">Powering a Brighter Tomorrow</h1>
-      <p style="font-size: 20px; margin-bottom: 30px;">Radiant Amps provides expert solar consulting solutions across the U.S. — optimizing performance, design, and impact.</p>
-      <a href="#services" style="background:#002B45; color:white; padding:12px 30px; border-radius:6px; font-weight:600; text-decoration:none; box-shadow: 0 4px 8px rgba(0,0,0,0.1); transition: background 0.3s ease;">Explore Our Services</a>
+  <body>
+    <div class="navbar">
+      <img src="logo.jpeg" alt="Radiant Amps Logo">
+      <div>
+        <a href="#home" class="active">HOME</a>
+        <a href="#services">SERVICES</a>
+        <a href="#about">ABOUT</a>
+        <a href="#careers">CAREERS</a>
+        <a href="#contact">CONTACT</a>
+      </div>
     </div>
-  </section>
+    <!-- HERO SECTION -->
+    <section id="home">
+      <div>
+        <h1 style="font-size: 48px; margin-bottom: 20px; font-weight: bold;">Advancing the Energy Future - Together</h1>
+        <p style="font-size: 20px; margin-bottom: 30px;">RadiantAmps Energy: Your trusted partner for comprehensive
+          solar solutions</p>
+        <a href="#services"
+          style="background:#002B45; color:white; padding:12px 30px; border-radius:6px; font-weight:600; text-decoration:none; box-shadow: 0 4px 8px rgba(0,0,0,0.1); transition: background 0.3s ease;">Explore
+          Our Services</a>
+      </div>
+    </section>
+    <!-- SERVICES SECTION -->
+    <section id="services">
+      <h2 style="text-align:center; font-size: 36px; margin-bottom: 40px;">Services</h2>
+      <p><strong>RadiantAmps Energy</strong> offers a comprehensive suite of detailed engineering services tailored to
+        solar projects of every scale. Our process-driven methodology ensures safe, code-compliant, and
+        performance-optimized solutions.</p>
+      <div class="services-grid">
+        <div class="service-card">
+          <h3>Complete Plan Sets for Permitting and Construction</h3>
+          <p>We provide detailed code compliant engineering drawings and documentation from 30% to IFC including PE
+            stamps, required to obtain permits and guide accurate efficient construction execution.</p>
+        </div>
+        <div class="service-card">
+          <h3>Energy Production Modeling</h3>
+          <p>Using industry-leading simulation tools such as PVSyst, PVCase, and Helioscope, we accurately forecast
+            solar energy output. Our detailed energy models help assess project viability, optimize system design, and
+            support financial modeling for stakeholders.</p>
+        </div>
+        <div class="service-card">
+          <h3>Feasibility Studies</h3>
+          <p>We perform in-depth feasibility assessments for ground-mounted and rooftop solar installations across
+            Commercial & Industrial (C&I) and utility-scale sectors. These studies include site analysis, environmental
+            constraints, and cost-benefit analysis to determine project potential and return on investment.</p>
+        </div>
+        <div class="service-card">
+          <h3>Detailed Engineering & Design</h3>
+          <p>Our team provides end-to-end Electrical, Civil and Structural, engineering services tailored for solar
+            energy projects. From layout optimization to system interconnection, our designs adhere to the highest
+            industry standards and align with applicable codes and regulations.</p>
+        </div>
+        <div class="service-card">
+          <h3>Power System Studies</h3>
+          <p>We conduct a full range of Power System Studies to ensure the reliability, safety, and grid compliance of
+            your solar project. Our studies include Short Circuit Analysis, Relay Coordination Studies and Arc Flash
+            Studies. These evaluations help identify and mitigate potential system issues, enabling safe and efficient
+            integration with utility grids and on-site power infrastructure.</p>
+        </div>
+        <div class="service-card">
+          <h3>Value Engineering</h3>
+          <p>We apply value engineering principles to enhance system performance and reduce costs without compromising
+            safety, reliability, or code compliance. Our goal is to deliver smart, efficient, and economically sound
+            solutions that maximize project value.</p>
+        </div>
+        <div class="service-card">
+          <h3>Owner’s Engineer/Representative Services</h3>
+          <p>Acting as the Owner’s Engineer, we provide technical oversight for the project owner. We provide
+            independent oversight throughout the project lifecycle—verifying design integrity, construction quality, and
+            regulatory compliance—while mitigating risks and supporting project success from concept to commissioning.
+          </p>
+        </div>
+        <div class="service-card">
+          <h3>Expert Project Consulting</h3>
+          <p>Our consulting services offer strategic and technical insight to guide your project from planning through
+            execution. We help streamline processes, resolve complex challenges, and ensure timely delivery within scope
+            and budget through customized advisory support.</p>
+        </div>
+      </div>
+    </section>
+    <!-- ABOUT SECTION -->
+    <section id="about">
+      <h2 style="text-align:center; font-size: 36px;">About Us</h2>
+      <div style="max-width: 900px; margin: auto;">
+        <p>RadiantAmps Energy is a solar consulting firm dedicated to delivering high-quality, code-compliant
+          engineering and project support across the United States. With a proven record across thousands of
+          installations, our licensed engineers and skilled designers collaborate closely with clients to provide
+          accurate, efficient, and cost-effective solutions. We prioritize safety, innovation, and regulatory alignment
+          to bring clarity and excellence to every solar initiative.</p>
+        <p>Founded on principles of sustainability and forward-thinking energy strategy, RadiantAmps empowers clients to
+          transition toward cleaner, cost-effective power solutions. Our consulting services span early-stage
+          feasibility assessments to post-installation performance evaluations, ensuring a seamless solar journey.</p>
+        <p>Whether working with residential clients, commercial businesses, or large-scale utilities, we tailor our
+          approach to each project’s unique needs. Our deep industry expertise and technical acumen enable us to handle
+          diverse project scopes, site constraints, and policy landscapes with agility.</p>
+        <p>With RadiantAmps, clients gain a partner committed to transparency, quality assurance, and long-term value.
+          We work across states, time zones, and regulations to keep your solar goals on track and on budget.</p>
+      </div>
+    </section>
+    <!-- CAREERS & CONTACT SECTION COMBINED -->
+    <section id="careers">
+      <h2 style="text-align:center; font-size: 36px;">Careers</h2>
+      <div style="max-width: 900px; margin: auto; font-size: 16px;">
+        <p>We’re always on the lookout for talented individuals passionate about solar energy, innovation, and making a
+          global impact. At Radiant Amps, we value integrity, collaboration, and continuous growth.</p>
+        <p>While we don't have open positions listed currently, we welcome expressions of interest. If you're driven by
+          purpose and ready to be part of the solar revolution, send your resume and a short introduction to: <a
+            href="mailto:careers@radiantamps.com">careers@radiantamps.com</a></p>
+      </div>
+    </section>
+    <section id="contact">
+      <h2 style="text-align:center; font-size: 36px;">Contact Us</h2>
+      <div style="max-width: 900px; margin: auto; font-size: 16px;">
+        <p>If you have inquiries, project needs, or partnership ideas, we’d love to hear from you. Please email us with
+          your name, contact details, and a short description of your requirement.</p>
+        <p>Write to us at <a href="mailto:info@radiantamps.com">info@radiantamps.com</a></p>
+      </div>
+    </section>
+    <!-- FOOTER -->
+    <footer>
+      <div class="footer-container">
+        <div class="footer-logo">
+          <img src="logo.jpeg" alt="Radiant Amps Logo">
+        </div>
+        <div class="footer-links">
+          <a href="#home">Home</a>
+          <a href="#services">Services</a>
+          <a href="#about">About</a>
+          <a href="#careers">Careers</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </div>
+      <hr class="footer-line">
+      <div class="footer-bottom">
+        <p>&copy; 2025 Radiant Amps. All rights reserved. | <a
+            href="mailto:info@radiantamps.com">info@radiantamps.com</a> | <a href="tel:+15125551234">+1 (512)
+            555-1234</a></p>
+      </div>
+    </footer>
+  </body>
 
-  <!-- SERVICES SECTION -->
-  <section id="services">
-    <h2 style="text-align:center; font-size: 36px; margin-bottom: 40px;">Services</h2>
-    <div class="service-card">
-      <h3>Solar Feasibility Assessment</h3>
-      <p>We conduct comprehensive evaluations to determine the solar potential of your site, including sun path analysis, shading studies, and utility interconnection feasibility.</p>
-    </div>
-    <div class="service-card">
-      <h3>Design & Engineering</h3>
-      <p>Our engineers create optimized solar PV system layouts, select appropriate components, and ensure code-compliant electrical and structural designs tailored to each site.</p>
-    </div>
-    <div class="service-card">
-      <h3>Permitting & Compliance</h3>
-      <p>We handle permitting workflows, ensure AHJ code compliance, and navigate NEC standards and utility interconnection requirements seamlessly.</p>
-    </div>
-    <div class="service-card">
-      <h3>Project Coordination</h3>
-      <p>We offer full-scope project management including milestone scheduling, vendor coordination, and on-site support during installation and commissioning.</p>
-    </div>
-    <div class="service-card">
-      <h3>Performance Review</h3>
-      <p>Through QA/QC checks and performance simulations, we validate installation accuracy and long-term reliability to ensure systems operate at peak efficiency.</p>
-    </div>
-    <div class="service-card">
-      <h3>Ongoing Advisory</h3>
-      <p>We provide long-term operations & maintenance guidance, utility monitoring support, and client training to maximize system performance post-installation.</p>
-    </div>
-  </section>
-
-  <!-- ABOUT SECTION -->
-  <section id="about">
-    <h2 style="text-align:center; font-size: 36px;">About Us</h2>
-    <div style="max-width: 900px; margin: auto;">
-      <p>RadiantAmps Energy is a solar consulting firm dedicated to delivering high-quality, code-compliant engineering and project support across the United States. With a proven record across thousands of installations, our licensed engineers and skilled designers collaborate closely with clients to provide accurate, efficient, and cost-effective solutions. We prioritize safety, innovation, and regulatory alignment to bring clarity and excellence to every solar initiative.</p>
-      <p>Founded on principles of sustainability and forward-thinking energy strategy, RadiantAmps empowers clients to transition toward cleaner, cost-effective power solutions. Our consulting services span early-stage feasibility assessments to post-installation performance evaluations, ensuring a seamless solar journey.</p>
-      <p>Whether working with residential clients, commercial businesses, or large-scale utilities, we tailor our approach to each project’s unique needs. Our deep industry expertise and technical acumen enable us to handle diverse project scopes, site constraints, and policy landscapes with agility.</p>
-      <p>With RadiantAmps, clients gain a partner committed to transparency, quality assurance, and long-term value. We work across states, time zones, and regulations to keep your solar goals on track and on budget.</p>
-    </div>
-  </section>
-
-  <!-- CAREERS & CONTACT SECTION COMBINED -->
-  <section id="careers-contact">
-    <h2 style="text-align:center; font-size: 36px;">Careers</h2>
-    <div style="max-width: 900px; margin: auto;">
-      <p>We are always on the lookout for passionate and talented individuals to join our team. If you're excited about renewable energy and making a tangible impact through clean technology, RadiantAmps could be the place for you.</p>
-      <ul>
-        <li><strong>Open Applications:</strong> We welcome interest even when specific positions are not posted.</li>
-        <li><strong>Resume Submissions:</strong> Send your resume and a short introduction to <a href="mailto:careers@radiantamps.com">careers@radiantamps.com</a>.</li>
-        <li><strong>Values:</strong> Integrity, collaboration, and innovation drive our work culture.</li>
-        <li><strong>Roles:</strong> Opportunities may include design engineers, project managers, analysts, and more.</li>
-      </ul>
-    </div>
-
-    <h2 style="text-align:center; font-size: 36px; margin-top: 80px;">Contact Us</h2>
-    <div style="max-width: 900px; margin: auto; text-align: center;">
-      <p>Have questions or need expert support for your solar project?</p>
-      <p>Email us at <a href="mailto:info@radiantamps.com">info@radiantamps.com</a></p>
-      <p>Call <a href="tel:+15125551234">+1 (512) 555-1234</a></p>
-      <p>Visit: 123 Solar Way, Austin, TX 78701</p>
-    </div>
-  </section>
+</html>
 </body>
+
 </html>
