@@ -19,7 +19,8 @@
       }
 
       #home {
-        height: 100vh;
+        height: 73vh;
+        background-color: #fff;
         animation: heroSlideShow 52s infinite;
         background-size: cover;
         background-repeat: no-repeat;
@@ -38,6 +39,16 @@
         border-radius: 12px;
         display: inline-block;
         max-width: 800px;
+      }
+
+      .navbar .log{
+        display: flex;
+      }
+
+      .navbar .logo img {
+        justify-content: center;
+    align-items: center;
+    align-self: anchor-center;
       }
 
       @keyframes heroSlideShow {
@@ -69,7 +80,15 @@
 
       #about {
         /* background-color: #f8fdfc; */
-        background-color: rgba(248, 253, 252, 0.80);
+        background-color: rgba(248, 253, 252, 1);
+      }
+
+      #about p {
+        margin: auto;
+        font-size: 24px;
+        /* line-height: 1.6; */
+        padding: 1rem 3rem;
+        color: #333;
       }
 
       #careers {
@@ -85,7 +104,8 @@
       }
 
       .navbar {
-        background: linear-gradient(90deg, #F7B500, #FFDC5E);
+        /* background: linear-gradient(90deg, #F7B500, #FFDC5E); */
+        background-color: #fff;
         padding: 12px 30px;
         display: flex;
         align-items: center;
@@ -127,12 +147,14 @@
         color: white;
         box-shadow: inset 0 -3px 0 #004D25;
       }
+
       #services p {
         font-size: 18px;
         line-height: 1.6;
         margin-bottom: 20px;
         padding: 0 3rem;
       }
+
       .services-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -244,7 +266,13 @@
 
   <body>
     <div class="navbar">
-      <img src="logo.jpeg" alt="Radiant Amps Logo">
+      <div class="logo">
+        <img src="sun.jpg" alt="Radiant Amps Logo">
+        <div>
+          <p class='logo-header'>RadiantAmps</p>
+          <p class='logo-subheader'>Energy</p>
+        </div>
+      </div>
       <div>
         <a href="#home" class="active">HOME</a>
         <a href="#services">SERVICES</a>
@@ -266,21 +294,12 @@
     </section>
     <!-- ABOUT SECTION -->
     <section id="about">
-      <h2 style="text-align:center; font-size: 36px;">About Us</h2>
-      <div style="max-width: 900px; margin: auto;">
-        <p>RadiantAmps Energy is a solar consulting firm dedicated to delivering high-quality, code-compliant
-          engineering and project support across the United States. With a proven record across thousands of
-          installations, our licensed engineers and skilled designers collaborate closely with clients to provide
-          accurate, efficient, and cost-effective solutions. We prioritize safety, innovation, and regulatory alignment
-          to bring clarity and excellence to every solar initiative.</p>
-        <p>Founded on principles of sustainability and forward-thinking energy strategy, RadiantAmps empowers clients to
-          transition toward cleaner, cost-effective power solutions. Our consulting services span early-stage
-          feasibility assessments to post-installation performance evaluations, ensuring a seamless solar journey.</p>
-        <p>Whether working with residential clients, commercial businesses, or large-scale utilities, we tailor our
-          approach to each project’s unique needs. Our deep industry expertise and technical acumen enable us to handle
-          diverse project scopes, site constraints, and policy landscapes with agility.</p>
-        <p>With RadiantAmps, clients gain a partner committed to transparency, quality assurance, and long-term value.
-          We work across states, time zones, and regulations to keep your solar goals on track and on budget.</p>
+      <h2 style="text-align:center; font-size: 42px;">About Us</h2>
+      <div style="margin: auto;">
+        <p>At RadiantAmps Energy, we are passionate about transforming the energy landscape through innovation, precision, and integrity. Our core values Integrity, Excellence, Collaboration, and a deep-rooted Commitment to Renewable Energy guide every project we undertake.</p>
+        <p>With a proven track record of contributing to thousands of successful solar energy projects, our multidisciplinary team brings unmatched technical experience and project execution capability. Our engineers, designers and solar experts work seamlessly together to provide solutions that are code-compliant, accurate, and optimized for performance.</p>
+        <p>Our staff includes Professional Engineers (P.E.s) licensed in all 50 U.S. states, supported by a team of highly trained designers and project managers who understand both the permitting requirement and real-world field execution. We pride ourselves on being more than just a service provider we strive to become a trusted extension of your project team.</p>
+        <p>Whether you're an owner, developer, EPC, contractor, RadiantAmps Energy delivers engineering excellence and support tailored to your specific needs. We minimize design errors, reduce permitting delays, and cut down unnecessary construction costs while helping you meet your renewable energy goals.</p>
       </div>
     </section>
     <!-- SERVICES SECTION -->
@@ -292,10 +311,8 @@
       <div class="services-grid">
         <div class="service-card">
           <h3>Complete Plan Sets for Permitting and Construction</h3>
-          <p>
-            We provide detailed code compliant engineering drawings and documentation from 30% to IFC including PE
-            stamps, required to obtain permits and guide accurate efficient construction execution.
-          </p>
+          <p> We provide detailed code compliant engineering drawings and documentation from 30% to IFC including PE
+            stamps, required to obtain permits and guide accurate efficient construction execution. </p>
         </div>
         <div class="service-card">
           <h3>Energy Production Modeling</h3>
