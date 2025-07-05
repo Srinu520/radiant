@@ -15,7 +15,8 @@
       }
 
       section {
-        padding: 50px 20px;
+        background-color: #fafafc !important;
+        padding: 20px 20px;
       }
 
       #home {
@@ -88,14 +89,43 @@
       }
 
       .accordion-header {
-        padding: 16px;
+        padding: 6px 16px 16px 16px;
         font-weight: bold;
         background-color: #fff;
         cursor: pointer;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        font-size: 28px;
+        font-size: 20px;
+      }
+
+      .accordion-header:hover {
+        background-color: #f0f0f0;
+      }
+
+      /* .accordion-header::before {
+        content: '';
+        display: inline-block;
+        width: 24px;
+        height: 24px;
+        background-color: #f7b500;
+        border-radius: 50%;
+        margin-right: 8px;
+      } */
+      .accordion-header {
+        padding: 6px 16px 16px 16px;
+        transition: padding-bottom 0.3s ease;
+      }
+
+      .accordion.active .accordion-header {
+        padding-bottom: 0;
+      }
+
+      .accordion-header .header-text::before {
+        content: '●';
+        font-size: 12px;
+        color: #7BBF6A;
+        margin-right: 8px;
       }
 
       .accordion-header::after {
@@ -114,12 +144,11 @@
         overflow: hidden;
         transition: max-height 0.5s ease, padding 0.5s ease, opacity 0.5s ease;
         opacity: 0;
-        padding: 0 16px;
+        padding: 0 16px 0 48px;
       }
 
       .accordion.active .accordion-content {
         max-height: 1000px;
-        padding: 16px;
         opacity: 1;
       }
 
@@ -134,28 +163,28 @@
         /* line-height: 1.6; */
         padding: 1rem 3rem;
         color: #333;
-        text-align: justify;
+        text-align: center;
       }
 
       #services p {
         margin: auto;
-        font-size: 24px;
+        font-size: 18px;
         /* line-height: 1.6; */
         padding: 0.5rem 0;
         color: #333;
-        text-align: justify;
+        text-align: left;
       }
 
       #careers {
         /* background-color: #fcf9fd; */
         background-color: rgba(253, 253, 248, 0.80);
-        padding: 100px 20px 10px 20px;
+        /* padding: 100px 20px 10px 20px; */
       }
 
       #contact {
         /* background-color: #f8fdfc; */
         background-color: rgba(248, 253, 252, 0.80);
-        padding: 50px 20px 10px 20px;
+        /* padding: 50px 20px 10px 20px; */
       }
 
       #careers h2,
@@ -172,12 +201,12 @@
         /* line-height: 1.6; */
         padding: 1rem 3rem;
         color: #333;
-        text-align: justify;
+        text-align: center;
       }
 
       .navbar {
         /* background: linear-gradient(90deg, #F7B500, #FFDC5E); */
-        background-color: #fff;
+        background-color: #e8eded;
         padding: 12px 30px;
         display: flex;
         align-items: center;
@@ -218,9 +247,10 @@
         border-radius: 50%;
       }
 
-      /* .navbar div {
+      .navbar .nav-links {
         padding: 0 3rem;
-      } */
+      }
+
       .nav-links {
         display: flex;
         align-items: center;
@@ -239,51 +269,22 @@
         /* border-radius: 4px; */
       }
 
-      .navbar a:hover {}
-
       .navbar a.active {
-        /* the active nav link only should have thick underline */
         border-bottom: 3px solid #F7B500;
       }
 
-      /* #services p {
-        font-size: 18px;
-        line-height: 1.6;
-        margin-bottom: 20px;
-        padding: 0 3rem;
-      }
-
-      .services-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-        gap: 20px;
-        max-width: 1200px;
-        margin: auto;
-      }
-
-      .service-card {
-        background: #ffffff;
-        border-radius: 10px;
-        padding: 30px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        transition: transform 0.3s ease;
-      }
-
-      .service-card:hover {
-        transform: translateY(-5px);
-      } */
-      footer {
-        background-color: #1d1d1d;
-        color: #f4f4f4;
-        padding: 40px 30px 20px;
-        font-size: 15px;
+      .navbar a:hover {
+        color: #F7B500;
       }
 
       .footer-container {
+        background-color: #e8eded;
+        padding: 12px 30px;
         display: flex;
-        flex-direction: column;
         align-items: center;
-        gap: 20px;
+        justify-content: space-between;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+        color: #ccc;
       }
 
       .footer-container .logo {
@@ -301,7 +302,7 @@
       .footer-container .logo-header {
         font-size: 32px;
         font-weight: bold;
-        color: #f4f4f4;
+        /* color: #f4f4f4; */
         margin: 0;
       }
 
@@ -324,7 +325,7 @@
       }
 
       .footer-links a {
-        color: #f4f4f4;
+        color: #002B45;
         text-decoration: none;
         font-weight: 600;
         transition: color 0.3s ease;
@@ -378,10 +379,17 @@
         // Accordion functionality
         document.querySelectorAll('.accordion-header').forEach(header => {
           header.addEventListener('click', function () {
-            const parent = this.parentElement;
-            parent.classList.toggle('active');
+            const current = this.parentElement;
+            const allAccordions = document.querySelectorAll('.accordion');
+
+            allAccordions.forEach(acc => {
+              if (acc !== current) acc.classList.remove('active');
+            });
+
+            current.classList.toggle('active');
           });
         });
+
         const links = document.querySelectorAll(".navbar a");
         links.forEach(link => {
           link.addEventListener("click", () => {
@@ -396,7 +404,7 @@
   <body>
     <div class="navbar">
       <div class="logo">
-        <img src="sun.jpg" alt="Radiant Amps Logo">
+        <img src="logo2.png" alt="Radiant Amps Logo">
         <div>
           <p class='logo-header'>RadiantAmps</p>
           <p class='logo-subheader'>Energy</p>
@@ -434,144 +442,110 @@
           and optimized for performance.</p>
         <p>Our staff includes Professional Engineers (P.E.s) licensed in all 50 U.S. states, supported by a team of
           highly trained designers and project managers who understand both the permitting requirement and real-world
-          field execution. We pride ourselves on being more than just a service provider we strive to become a trusted
+          field execution. We pride ourselves on being more than just a service provider. we aim to serve as a trusted
           extension of your project team.</p>
         <p>Whether you're an owner, developer, EPC, contractor, RadiantAmps Energy delivers engineering excellence and
           support tailored to your specific needs. We minimize design errors, reduce permitting delays, and cut down
           unnecessary construction costs while helping you meet your renewable energy goals.</p>
       </div>
+      <img src="afterAbout.jpeg" alt="Radiant Amps Services"
+        style="display: block; margin: 20px auto; width: 100%; height: auto; border-radius: 8px;">
     </section>
     <!-- SERVICES SECTION -->
-    <!-- <section id="services">
-      <h2 style="text-align:center; font-size: 36px; margin-bottom: 40px;">Services</h2>
-      <p><strong>RadiantAmps Energy</strong> offers a comprehensive suite of detailed engineering services tailored to
-        solar projects of every scale. Our process-driven methodology ensures safe, code-compliant, and
-        performance-optimized solutions.</p>
-      <div class="services-grid">
-        <div class="service-card">
-          <h3>Complete Plan Sets for Permitting and Construction</h3>
-          <p> We provide detailed code compliant engineering drawings and documentation from 30% to IFC including PE
-            stamps, required to obtain permits and guide accurate efficient construction execution. </p>
-        </div>
-        <div class="service-card">
-          <h3>Energy Production Modeling</h3>
-          <p>Using industry-leading simulation tools such as PVSyst, PVCase, and Helioscope, we accurately forecast
-            solar energy output. Our detailed energy models help assess project viability, optimize system design, and
-            support financial modeling for stakeholders.</p>
-        </div>
-        <div class="service-card">
-          <h3>Feasibility Studies</h3>
-          <p>We perform in-depth feasibility assessments for ground-mounted and rooftop solar installations across
-            Commercial & Industrial (C&I) and utility-scale sectors. These studies include site analysis, environmental
-            constraints, and cost-benefit analysis to determine project potential and return on investment.</p>
-        </div>
-        <div class="service-card">
-          <h3>Detailed Engineering & Design</h3>
-          <p>Our team provides end-to-end Electrical, Civil and Structural, engineering services tailored for solar
-            energy projects. From layout optimization to system interconnection, our designs adhere to the highest
-            industry standards and align with applicable codes and regulations.</p>
-        </div>
-        <div class="service-card">
-          <h3>Power System Studies</h3>
-          <p>We conduct a full range of Power System Studies to ensure the reliability, safety, and grid compliance of
-            your solar project. Our studies include Short Circuit Analysis, Relay Coordination Studies and Arc Flash
-            Studies. These evaluations help identify and mitigate potential system issues, enabling safe and efficient
-            integration with utility grids and on-site power infrastructure.</p>
-        </div>
-        <div class="service-card">
-          <h3>Value Engineering</h3>
-          <p>We apply value engineering principles to enhance system performance and reduce costs without compromising
-            safety, reliability, or code compliance. Our goal is to deliver smart, efficient, and economically sound
-            solutions that maximize project value.</p>
-        </div>
-        <div class="service-card">
-          <h3>Owner’s Engineer/Representative Services</h3>
-          <p>Acting as the Owner’s Engineer, we provide technical oversight for the project owner. We provide
-            independent oversight throughout the project lifecycle—verifying design integrity, construction quality, and
-            regulatory compliance—while mitigating risks and supporting project success from concept to commissioning.
-          </p>
-        </div>
-        <div class="service-card">
-          <h3>Expert Project Consulting</h3>
-          <p>Our consulting services offer strategic and technical insight to guide your project from planning through
-            execution. We help streamline processes, resolve complex challenges, and ensure timely delivery within scope
-            and budget through customized advisory support.</p>
-        </div>
-      </div>
-    </section> -->
     <section id="services">
       <h2 style="text-align:center; font-size: 36px; margin-bottom: 40px;">Our Services</h2>
+      <h3 style="text-align:center; font-size: 22px; margin-bottom: 40px;">RadiantAmps Energy offers a comprehensive suite of detailed engineering services tailored to solar projects of every scale. Our process-driven methodology ensures safe, code-compliant, and performance-optimized solutions.</h3>
       <div class="accordion">
-        <div class="accordion-header">Complete Plan Sets</div>
-        <div class="accordion-content">
-          <p>Code-compliant engineering drawings and documentation from 30% to IFC, including PE stamps. Designed to
-            ensure accurate, efficient, and permit-ready construction execution.</p>
-        </div>
-      </div>
-      <div class="accordion">
-        <div class="accordion-header">Energy Production Modeling</div>
+        <div class="accordion-header"><span class="header-text">Energy Production Modeling </span></div>
         <div class="accordion-content">
           <p>Forecast energy output using top-tier tools like PVSyst, PVCase, and Helioscope. Our models inform design
             decisions and support financial assessments.</p>
         </div>
       </div>
       <div class="accordion">
-        <div class="accordion-header">Feasibility Studies</div>
+        <div class="accordion-header"><span class="header-text">Feasibility Studies </span></div>
         <div class="accordion-content">
           <p>Comprehensive assessments for C&I and utility-scale solar. Includes site, environmental, and cost-benefit
             analysis to evaluate potential and ROI.</p>
         </div>
       </div>
       <div class="accordion">
-        <div class="accordion-header">Detailed Engineering & Design</div>
+        <div class="accordion-header"><span class="header-text">Development Engineering</span></div>
+        <div class="accordion-content">
+          <p>RadiantAmps Energy gets involved early in development engineering by evaluating site conditions, creating
+            conceptual designs, performing energy modeling, and sizing key equipment to support accurate and competitive
+            project bids. We help de-risk solar projects by ensuring code compliance, optimizing layouts, supporting
+            permitting and utility coordination, and aligning technical scope with cost and financing
+            requirements—ultimately preparing projects for successful execution.</p>
+        </div>
+      </div>
+      <div class="accordion">
+        <div class="accordion-header"><span class="header-text">Detailed Engineering & Design</span></div>
         <div class="accordion-content">
           <p>Electrical, Civil, and Structural designs tailored to each site. Our plans follow strict standards and
             ensure regulatory compliance.</p>
         </div>
       </div>
       <div class="accordion">
-        <div class="accordion-header">Power System Studies</div>
+        <div class="accordion-header"><span class="header-text">Designing Across All 50 States</span></div>
         <div class="accordion-content">
-          <p>Short Circuit, Relay Coordination, and Arc Flash Studies for safe, reliable integration with grid and
-            on-site systems.</p>
+          <p>RadiantAmps Energy is licensed to provide engineering services in all 50 states, enabling us to support
+            solar projects nationwide with speed, precision, and full compliance with local codes. Our early involvement
+            includes site evaluation, conceptual design, energy modeling, and equipment sizing to create accurate and
+            competitive project bids. We help de-risk projects by ensuring technical and regulatory alignment,
+            optimizing layouts, and supporting permitting and utility coordination—preparing projects for successful
+            execution anywhere in the U.S.</p>
         </div>
       </div>
       <div class="accordion">
-        <div class="accordion-header">Designing Across All 50 States</div>
+        <div class="accordion-header"><span class="header-text">Complete Plan Sets</span></div>
         <div class="accordion-content">
-          <p>RadiantAmps Energy is licensed to provide engineering services in all 50 states, enabling us to support solar projects nationwide with speed, precision, and full compliance with local codes. Our early involvement includes site evaluation, conceptual design, energy modeling, and equipment sizing to create accurate and competitive project bids. We help de-risk projects by ensuring technical and regulatory alignment, optimizing layouts, and supporting permitting and utility coordination—preparing projects for successful execution anywhere in the U.S.</p>
+          <p>Code-compliant electrical, civil, structural engineering plans and documentation from 10%, 30%, 60%, all
+            the way to IFC, including PE stamps. Designed to ensure accurate, efficient, and permit-ready construction
+            execution.</p>
         </div>
       </div>
       <div class="accordion">
-        <div class="accordion-header">Value Engineering</div>
+        <div class="accordion-header"><span class="header-text">Value Engineering</span></div>
         <div class="accordion-content">
           <p>Enhance performance and reduce costs through strategic design decisions—without compromising reliability or
             safety.</p>
         </div>
       </div>
       <div class="accordion">
-        <div class="accordion-header">Owner’s Engineer Services</div>
+        <div class="accordion-header"><span class="header-text">Power System Studies</div>
+        <div class="accordion-content">
+          <p>Short Circuit, Relay Coordination, and Arc Flash Studies for safe, reliable integration with grid and
+            on-site systems.</p>
+        </div>
+      </div>
+      <div class="accordion">
+        <div class="accordion-header"><span class="header-text">Owner’s Engineer Services</span></div>
         <div class="accordion-content">
           <p>Independent project oversight from design through commissioning. We validate quality, manage risk, and
             ensure compliance every step of the way.</p>
         </div>
       </div>
       <div class="accordion">
-        <div class="accordion-header">Expert Project Consulting</div>
+        <div class="accordion-header"><span class="header-text">Expert Project Consulting</span></div>
         <div class="accordion-content">
           <p>Guiding projects through planning, design, and execution. We help resolve challenges, streamline delivery,
             and keep you on track.</p>
         </div>
       </div>
+      <img src="afterservices1.jpeg" alt="Radiant Amps Services"
+        style="display: block; margin: 20px auto; width: 100%; height: auto; border-radius: 8px;">
+      <img src="afterservices2.jpeg" alt="Radiant Amps Services"
+        style="display: block; margin: 20px auto; width: 100%; height: auto; border-radius: 8px;">
     </section>
     <!-- CAREERS & CONTACT SECTION COMBINED -->
     <section id="careers">
       <h2 style="text-align:center; font-size: 36px;">Careers</h2>
       <div>
-        <p>We’re always on the lookout for talented individuals passionate about solar energy, innovation, and making a
-          global impact. At Radiant Amps, we value integrity, collaboration, and continuous growth.</p>
-        <p>While we don't have open positions listed currently, we welcome expressions of interest. If you're driven by
-          purpose and ready to be part of the solar revolution, send your resume and a short introduction to: <a
+        <p>We’re always on the lookout for talented individuals passionate about future of energy, innovation, and
+          making a global impact. At Radiant Amps, we value integrity, collaboration, and continuous growth.</p>
+        <p>While we might not have open positions listed currently, if you're driven by purpose and ready to be part of
+          the energy revolution, send your resume and a short introduction to: <a
             href="mailto:careers@radiantamps.com">careers@radiantamps.com</a></p>
       </div>
     </section>
@@ -587,7 +561,7 @@
     <footer>
       <div class="footer-container">
         <div class="logo">
-          <img src="sun.jpg" alt="Radiant Amps Logo">
+          <img src="logo2.png" alt="Radiant Amps Logo">
           <div>
             <p class='logo-header'>RadiantAmps</p>
             <p class='logo-subheader'>Energy</p>
@@ -601,12 +575,12 @@
           <a href="#contact">Contact</a>
         </div>
       </div>
-      <hr class="footer-line">
+      <!-- <hr class="footer-line">
       <div class="footer-bottom">
         <p>&copy; 2025 Radiant Amps. All rights reserved. | <a
             href="mailto:info@radiantamps.com">info@radiantamps.com</a> | <a href="tel:+15125551234">+1 (512)
             555-1234</a></p>
-      </div>
+      </div> -->
     </footer>
   </body>
 
