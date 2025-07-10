@@ -177,15 +177,18 @@
         /* max-width: 1200px; */
         margin: auto;
       }
+
       #contact {
         padding: 0 !important;
         /* margin: 0 !important; */
         padding-bottom: 3rem !important;
       }
+
       #careers {
         padding-bottom: 0 !important;
         /* margin: 0 !important; */
       }
+
       .full-width {
         /* width: -webkit-fill-available; */
         width: 80vw;
@@ -198,7 +201,6 @@
       .available-width {
         /* width: -webkit-fill-available; */
         width: 80% !important;
-
       }
 
       /* HERO SECTION */
@@ -288,13 +290,109 @@
       }
 
       @media (max-width: 768px) {
-        .services-flex {
-          flex-direction: column;
+        h1 {
+          font-size: 28px;
         }
 
-        .services-flex img,
+        h2 {
+          font-size: 24px;
+        }
+
+        h3 {
+          font-size: 18px;
+        }
+
+        p {
+          font-size: 16px;
+        }
+
+        .navbar {
+          flex-wrap: wrap;
+          padding: 10px 0;
+        }
+
+        .navbar .nav-links {
+          display: none;
+          flex-direction: column;
+          background-color: #e8eded;
+          width: 100%;
+          padding: 10px 0;
+        }
+
+        .navbar .nav-links.show {
+          display: flex;
+        }
+
+        .navbar-toggle {
+          display: block;
+          margin-left: auto;
+        }
+
+        .logo img {
+          height: 50px;
+          width: 50px;
+        }
+
+        .logo-header {
+          font-size: 20px;
+        }
+
+        .logo-subheader {
+          font-size: 16px;
+        }
+
+        .nav-links a {
+          padding: 10px;
+          border-top: 1px solid #ccc;
+          width: 100%;
+          text-align: center;
+        }
+
+        section,
+        .footer-container {
+          padding: 20px;
+        }
+
+        img {
+          max-width: 100%;
+          height: auto;
+          display: block;
+          margin: auto;
+        }
+
+        .logo-links-container {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .footer-links {
+          flex-direction: column;
+          align-items: center;
+          width: 100%;
+        }
+
+        .footer-container {
+          text-align: center;
+        }
+
         .accordion-group {
           width: 100%;
+        }
+
+        .accordion-content {
+          padding: 10px 0 !important;
+        }
+
+        .accordion.active .accordion-content {
+          max-height: 600px;
+          opacity: 1;
+          overflow: auto;
+          /* padding: 10px 16px 16px 48px; */
+        }
+
+        #services p {
+          padding: 0;
+          text-align: center;
         }
       }
 
@@ -380,13 +478,15 @@
         /* justify-content: space-between; */
         padding: 1rem 0;
       }
-      .links-bottom-line-container{
+
+      .links-bottom-line-container {
         /* margin-left: 21vw; */
         position: absolute;
         /* right: -50%; */
         left: 42%;
         /* width: 100%; */
       }
+
       .footer-links {
         display: flex;
         flex-wrap: wrap;
@@ -411,40 +511,32 @@
       }
     </style>
     <script>
-      window.addEventListener("DOMContentLoaded", () => {
-        // Accordion functionality
+      document.addEventListener("DOMContentLoaded", function () {
+        const toggle = document.querySelector('.navbar-toggle');
+        const navLinks = document.querySelector('.navbar .nav-links');
+
+        toggle.addEventListener('click', () => {
+          navLinks.classList.toggle('show');
+        });
+
+        document.querySelectorAll('.nav-links a').forEach(link => {
+          link.addEventListener('click', () => {
+            navLinks.classList.remove('show');
+          });
+        });
+
         document.querySelectorAll('.accordion-header').forEach(header => {
           header.addEventListener('click', function () {
             const current = this.parentElement;
             const allAccordions = document.querySelectorAll('.accordion');
-
             allAccordions.forEach(acc => {
               if (acc !== current) acc.classList.remove('active');
             });
-
             current.classList.toggle('active');
           });
         });
-
-        const links = document.querySelectorAll(".navbar a");
-        links.forEach(link => {
-          link.addEventListener("click", () => {
-            links.forEach(el => el.classList.remove("active"));
-            link.classList.add("active");
-          });
-        });
-        const toggle = document.querySelector('.navbar-toggle');
-        const menu = document.querySelector('.navbar-menu');
-        toggle.addEventListener('click', () => {
-          menu.classList.toggle('open');
-        });
-        document.querySelectorAll('.navbar-menu a').forEach(link => {
-          link.addEventListener('click', () => {
-            menu.classList.remove('open');
-          });
-        });
-
       });
+
     </script>
   </head>
 
@@ -501,13 +593,13 @@
     <!-- SERVICES START -->
     <section id="services">
       <h2>Our Services</h2>
-      <p style='text-align: justify;'>RadiantAmps Energy delivers a comprehensive suite of detailed
-        engineering services meticulously tailored to solar projects of all sizes. Leveraging a process-driven
-        methodology, we ensure solutions that are not only safe and code-compliant but also optimized for peak
-        performance and long term reliability. Our expert team collaborates closely with clients to navigate complex
-        challenges, reduce risks, and accelerate project timelines empowering your solar investment to achieve maximum
-        value and sustainable success. Below is an overview of our core services, designed to meet the
-        diverse needs of solar projects at every stage.</p>
+      <p style='text-align: justify;'>RadiantAmps Energy delivers a comprehensive suite of detailed engineering services
+        meticulously tailored to solar projects of all sizes. Leveraging a process-driven methodology, we ensure
+        solutions that are not only safe and code-compliant but also optimized for peak performance and long term
+        reliability. Our expert team collaborates closely with clients to navigate complex challenges, reduce risks, and
+        accelerate project timelines empowering your solar investment to achieve maximum value and sustainable success.
+        Below is an overview of our core services, designed to meet the diverse needs of solar projects at every stage.
+      </p>
       <!-- <h3 style="text-align:center; font-size: 22px;">Below is an overview of our core services, designed to meet the
         diverse needs of solar projects at every stage.</h3> -->
       <div class="services-flex">
@@ -536,7 +628,11 @@
           <div class="accordion">
             <div class="accordion-header"><span class="header-text">Development Engineering</span></div>
             <div class="accordion-content">
-              <p>RadiantAmps Energy gets involved early in development engineering by evaluating site conditions, creating conceptual designs, performing energy modeling, and sizing key equipment to support accurate and competitive project bids. We help de-risk solar projects by ensuring code compliance, optimizing layouts, supporting permitting and utility coordination, and aligning technical scope with cost and financing requirements—ultimately preparing projects for successful execution.</p>
+              <p>RadiantAmps Energy gets involved early in development engineering by evaluating site conditions,
+                creating conceptual designs, performing energy modeling, and sizing key equipment to support accurate
+                and competitive project bids. We help de-risk solar projects by ensuring code compliance, optimizing
+                layouts, supporting permitting and utility coordination, and aligning technical scope with cost and
+                financing requirements—ultimately preparing projects for successful execution.</p>
             </div>
           </div>
           <div class="accordion">
@@ -552,7 +648,12 @@
           <div class="accordion">
             <div class="accordion-header"><span class="header-text">Designing Across All 50 States</span></div>
             <div class="accordion-content">
-              <p>RadiantAmps Energy is licensed to provide engineering services in all 50 states, enabling us to support solar projects nationwide with speed, precision, and full compliance with local codes. Our early involvement includes site evaluation, conceptual design, energy modeling, and equipment sizing to create accurate and competitive project bids. We help de-risk projects by ensuring technical and regulatory alignment, optimizing layouts, and supporting permitting and utility coordination—preparing projects for successful execution anywhere in the U.S.</p>
+              <p>RadiantAmps Energy is licensed to provide engineering services in all 50 states, enabling us to support
+                solar projects nationwide with speed, precision, and full compliance with local codes. Our early
+                involvement includes site evaluation, conceptual design, energy modeling, and equipment sizing to create
+                accurate and competitive project bids. We help de-risk projects by ensuring technical and regulatory
+                alignment, optimizing layouts, and supporting permitting and utility coordination—preparing projects for
+                successful execution anywhere in the U.S.</p>
               <img src="afterservices2.jpeg" class='available-width' alt="US Map Coverage"
                 style="border-radius: 8px;" />
             </div>
