@@ -387,12 +387,8 @@
           width: 100%;
         }
 
-        .accordion-content {
-          padding: 10px 0 !important;
-        }
-
         .accordion.active .accordion-content {
-          max-height: 600px;
+          max-height: fit-content;
           opacity: 1;
           overflow: auto;
           /* padding: 10px 16px 16px 48px; */
@@ -422,8 +418,24 @@
         text-align: left;
       }
 
+      .footer-mobile {
+        display: none;
+      }
+
+      .footer-desktop {
+        display: block;
+      }
+
       /* Mobile only */
       @media (max-width: 768px) {
+        .footer-mobile {
+          display: block;
+        }
+
+        .footer-desktop {
+          display: none;
+        }
+
         .footer-container {
           text-align: center;
         }
@@ -436,10 +448,22 @@
         .footer-links {
           justify-content: center;
           flex-wrap: wrap;
+          flex-direction: row;
         }
 
         .footer-bottom {
           text-align: center;
+        }
+
+        .logo-links-container {
+          flex-direction: column;
+          justify-content: space-between;
+          align-items: center;
+        }
+
+        .logo-links-container .logo {
+          flex-direction: row;
+          text-align: left;
         }
       }
 
@@ -508,7 +532,7 @@
       }
 
       .accordion.active .accordion-content {
-        max-height: 600px;
+        max-height: fit-content;
         opacity: 1;
         padding: 2px 16px 16px 48px;
         overflow: auto;
@@ -595,13 +619,13 @@
   <body>
     <!-- NAVBAR -->
     <div class="navbar">
-      <a href="#home" class="logo">
+      <div class="logo">
         <img src="logo2.png" alt="Logo" />
         <div>
           <p class="logo-header">RadiantAmps</p>
           <p class="logo-subheader">Energy</p>
         </div>
-      </a>
+      </div>
       <div class="navbar-toggle">☰</div>
       <div class="nav-links">
         <a href="#home" class="active">Home</a>
@@ -770,7 +794,30 @@
       <p>Write to us at <a href="mailto:info@radiantamps.com">info@radiantamps.com</a></p>
     </section>
     <!-- FOOTER -->
-    <footer>
+    <footer class="footer-mobile">
+      <div class="footer-container">
+        <div class='logo-links-container'>
+          <a href="#home" class="logo">
+            <img src="logo2.png" alt="Footer Logo" />
+            <div>
+              <p class="logo-header">RadiantAmps</p>
+              <p class="logo-subheader">Energy</p>
+            </div>
+          </a>
+          <div class='footer-links'>
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#services">Services</a>
+            <a href="#careers">Careers</a>
+            <a href="#contact">Contact</a>
+          </div>
+          <div class="footer-bottom">
+            <p>&copy; 2025 Radiant Amps. All rights reserved.</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <footer class="footer-desktop">
       <div class="footer-container">
         <div class='logo-links-container'>
           <a href="#home" class="logo">
